@@ -1,6 +1,12 @@
 import posts from "./tuits.js";
 let tuits = posts;
 
+const TuitsController = (app) => {
+  app.post('/api/tuits', createTuit);
+  app.get('/api/tuits', findTuits);
+  app.put('/api/tuits/:tid', updateTuit);
+  app.delete('/api/tuits/:tid', deleteTuit);
+}
 
 const createTuit = (req, res) => {
   const newTuit = req.body;                   // retrieve data from HTTP body
