@@ -7,11 +7,12 @@ import cors from 'cors'
 
 
 const app = express()
+// app.get('/hello', (req, res) => {res.send('Hello World!')})  // 
 app.use(cors()) // enable ALL CORS requests (client requests from other domain)
 app.use(express.json()); // parse JSON from HTTP request body
 
 TuitsController(app);
 // HelloController(app);
-// UsesController(app);
+// UsersController(app);
 
-app.listen(4000)
+app.listen(4000 || process.env.PORT)

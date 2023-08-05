@@ -56,12 +56,4 @@ const deleteTuit = (req, res) => {
   res.sendStatus(200);                       // respond with success       
 }
 
-
-const TuitsController = (app) => {
-  app.post('/api/tuits', createTuit);
-  app.get('/api/tuits', findTuits);
-  app.put('/api/tuits/:tid', updateTuit);
-  app.delete('/api/tuits/:tid', deleteTuit);
-}
-
 export default TuitsController;
