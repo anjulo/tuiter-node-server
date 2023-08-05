@@ -26,11 +26,10 @@ const templateTuit = {
 }
 
 const createTuit = (req, res) => {
-  const newTuit = req.body;                   // retrieve data from HTTP body
-  newTuit._id = (new Date()).getTime() + '';    // add _id field as a time stamp
-  newTuit.likes = 0;                          // initialize likes counter
-  newTuit.liked = false;                    // initialize liked flag      
-  tuits.push(newTuit);                        // append new tuit to tuits array
+  let newTuit = req.body;                   // retrieve data from HTTP body   
+  newTuit = { ...templateTuit, ...newTuit };     // merge with template 
+  tuits.unshift(newTuit);                        // append new tuit to tuits array
+  console.log(newTuit)
   res.json(newTuit);                        // respond with new tuit                
 }                                           // next chapter will store in database instead
 
