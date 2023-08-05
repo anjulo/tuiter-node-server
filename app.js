@@ -13,6 +13,6 @@ app.use(express.json()); // parse JSON from HTTP request body
 
 TuitsController(app);
 // HelloController(app);
-// UsersController(app);
+UsersController(app);
 
 app.listen(4000 || process.env.PORT)
