@@ -8,6 +8,23 @@ const TuitsController = (app) => {
   app.delete('/api/tuits/:tid', deleteTuit);
 }
 
+const currentUser = {
+  "userName": "NASA",
+  "handle": "@nasa",
+  "image": "nasa.jpg",
+};
+
+const templateTuit = {
+  ...currentUser,
+  "topic": "Space",
+  "time": "now",
+  "liked": false,
+  "replies": 0,
+  "retuits": 0,
+  "likes": 0,
+  "_id": new Date().getTime() + '',
+}
+
 const createTuit = (req, res) => {
   const newTuit = req.body;                   // retrieve data from HTTP body
   newTuit._id = (new Date()).getTime() + '';    // add _id field as a time stamp
