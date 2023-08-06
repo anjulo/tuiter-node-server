@@ -39,7 +39,6 @@ const findTuits = async (req, res) => {
 const updateTuit = async (req, res) => {
   const tuitsIdToUpdate = req.params.tid;         // get ID of tuit to update from path
   const updates = req.body;                       // get updates from HTTP body
-  console.log(`Updating tuit ${tuitsIdToUpdate} with ${JSON.stringify(updates)}`)
   const status = await tuitsDAO.updateTuit(tuitsIdToUpdate, updates); // returns success or failure
   res.send(status);                                     
 }                                                 // next chapter will remove from database instead
