@@ -26,6 +26,7 @@ const templateTuit = {
 const createTuit = async (req, res) => {
   let newTuit = req.body;                   // retrieve data from HTTP body   
   newTuit = { ...templateTuit, ...newTuit };     // merge with template 
+  const insertedTuit = await tuitsDAO.createTuit(newTuit); // create new tuit in database
   res.json(insertedTuit);                        // respond with new tuit                
 }                                           // next chapter will store in database instead
 
