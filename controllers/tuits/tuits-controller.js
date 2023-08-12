@@ -1,10 +1,10 @@
 import * as tuitsDAO from './tuits-dao.js';         // import the dao
 
 const TuitsController = (app) => {
-  app.post('/api/tuits', createTuit);
-  app.get('/api/tuits', findTuits);
-  app.put('/api/tuits/:tid', updateTuit);
-  app.delete('/api/tuits/:tid', deleteTuit);
+  app.post('/tuits', createTuit);
+  app.get('/tuits', findTuits);
+  app.put('/tuits/:tid', updateTuit);
+  app.delete('/tuits/:tid', deleteTuit);
 }
 
 const currentUser = {
