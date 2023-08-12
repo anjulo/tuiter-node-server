@@ -5,15 +5,28 @@ import UsersController from './controllers/users/users-controller.js';
 import TuitsController from './controllers/tuits/tuits-controller.js';
 import cors from 'cors'
 import mongoose from 'mongoose';
+import session from 'express-session';
 
-mongoose.connect('mongodb://127.0.0.1:27017/tuiter');
+
+// console.log(process.env.DB_CONNECTION_STRING)
+const CONNECTION_STRING = process.env.DB_CONNECTION_STRING || 'mongodb://127.0.0.1:27017/tuiter';
+mongoose.connect(CONNECTION_STRING);
 
 const app = express()
 // app.get('/hello', (req, res) => {res.send('Hello World!')})  // 
-app.use(cors()) // enable ALL CORS requests (client requests from other domain)
+app.use(cors({
+  credentials: true,
+  origin: 'http://localhost:3000'
+}))
 app.use(express.json()); // parse JSON from HTTP request body
+app.use(session({
+  secret: "should be environment variable",
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: false }
+}))
 
+UsersController(app); // should come first
 TuitsController(app);
-UsersController(app);
 
-app.listen(4000 || process.env.PORT)
+app.listen(process.env.PORT || 4000) // use process.env.PORT to get port from environment variable for Heroku deployment
