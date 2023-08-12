@@ -15,7 +15,7 @@ const app = express()
 // app.get('/hello', (req, res) => {res.send('Hello World!')})  // 
 app.use(cors({
   credentials: true,
-  origin: 'http://localhost:3000'
+  origin: process.env.NETLIFY_URL
 }))
 app.use(express.json()); // parse JSON from HTTP request body
 app.use(session({
